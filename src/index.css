@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
