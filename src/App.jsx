@@ -1,9 +1,9 @@
-import About from "./components/About"
-import Contact from "./components/contact"
-import Footer from "./components/Footer"
-import Hero from "./components/Hero"
-import Projects from "./components/projects"
-import Header from "./components/Header"
+import About from "./components/About.jsx"
+import Footer from "./components/Footer.jsx"
+import Hero from "./components/Hero.jsx"
+import Projects from "./components/projects.jsx"
+import Header from "./components/Header.jsx"
+import Contact from "./components/contact.jsx"
 import React from 'react'
 
 function App() {
