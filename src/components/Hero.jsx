@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useTheme } from "../context/Themecontext.jsx";
-
-function Hero() {
+import { useInView } from "react-intersection-observer";
+const Hero=({ setHeroInView })=> {
+  const [ ref, inView ] = useInView({ threshold: 0.2 });
   const { isDarkMode } = useTheme();
 
+  useEffect(() => {
+    setHeroInView(inView);
+  }, [inView, setHeroInView]);
   return (
     <section
+      ref={ref} 
       className={`
-        relative flex flex-col items-center justify-center min-h-screen
-        transition-colors duration-500 w-full md:overflow-hidden px-4
+        relative flex flex-col items-center justify-center min-h-screen 
+        transition-colors duration-500 w-full md:overflow-hidden px-4 
         ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}
       `}
       id='home'

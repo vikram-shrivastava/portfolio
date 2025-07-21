@@ -6,16 +6,19 @@ import {
   FaNodeJs,
   FaJs,
   FaDatabase,
-  FaGithub
+  FaGithub,
 } from "react-icons/fa";
 import { DiRedis } from "react-icons/di";
 import { TbBrandNextjs, TbBrandCpp } from "react-icons/tb";
 import { useTheme } from "../context/Themecontext.jsx";
 import { BiLogoMongodb, BiLogoPostgresql } from "react-icons/bi";
-import { SiRedux, SiExpress, SiNextdotjs, SiReactrouter, SiNextdotjs as NextAuthIcon } from "react-icons/si";
-import { RiReactjsLine } from "react-icons/ri";
-
-
+import {
+  SiRedux,
+  SiExpress,
+  SiNextdotjs,
+  SiReactrouter,
+  SiNextdotjs as NextAuthIcon,
+} from "react-icons/si";
 
 const skills = [
   // Core Languages
@@ -77,26 +80,59 @@ function About() {
 
   return (
     <motion.section
-      className={`about-section ${isDarkMode ? "dark" : "light"} border-t dark:border-gray-400 border-gray-700`}
+      className={`about-section ${
+        isDarkMode ? "dark" : "light"
+      } border-t dark:border-gray-400 border-gray-700 min-h-screen pt-28 `}
       initial="hidden"
       animate="visible"
       variants={containerVariants}
       id="about"
     >
       <div className="about-container">
-        <motion.h1 variants={itemVariants} className="about-title">
+        <motion.h1
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="about-title"
+        >
           About Me
         </motion.h1>
-        <motion.p variants={itemVariants} className="about-desc">
-          Hi, I'm <b className="text-primary">Vikram Shrivastav</b>, a Full Stack Developer specializing in modern JavaScript ecosystems like MERN and Next.js, passionate about building fast, scalable, and user-centric web applications. I blend strong UI/UX skills with backend efficiency and system-level thinking, always eager to learn and adapt to emerging technologies like GenAI and Data Science.
+
+        <motion.p
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="about-desc"
+        >
+          Hi, I'm <b className="text-primary">Vikram Shrivastav</b>, a Full
+          Stack Developer specializing in modern JavaScript ecosystems like MERN
+          and Next.js, passionate about building fast, scalable, and
+          user-centric web applications. I blend strong UI/UX skills with
+          backend efficiency and system-level thinking, always eager to learn
+          and adapt to emerging technologies like GenAI and Data Science.
         </motion.p>
 
         {/* Education Timeline */}
-        <motion.div variants={itemVariants} className="timeline-container">
+        <motion.div
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="timeline-container"
+        >
           <h2 className="section-subtitle">Education</h2>
           <div className="timeline">
             {education.map((item, idx) => (
-              <motion.div key={idx} className="timeline-item" variants={itemVariants}>
+              <motion.div
+                key={idx}
+                className="timeline-item"
+                variants={itemVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+              >
                 <div className="timeline-icon">{item.icon}</div>
                 <div className="timeline-details">
                   <div className="timeline-degree">{item.degree}</div>
@@ -109,15 +145,24 @@ function About() {
         </motion.div>
 
         {/* Skills Section */}
-        <label id="skills"></label>
-        <motion.div variants={itemVariants} >
-          <h2 className="section-subtitle">Skills</h2>
+        <motion.div
+          variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="pb-7"
+        >
+          <label id="skills"></label>
+          <h2 className="section-subtitle pt-32">Skills</h2>
           <div className="skills-list">
             {skills.map((skill) => (
               <motion.div
                 key={skill.name}
                 whileHover={{ scale: 1.05 }}
                 className="skill-item"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
               >
                 {skill.icon}
                 <span>{skill.name}</span>
@@ -130,7 +175,6 @@ function About() {
       <style>{`
         .about-section {
           width: 100%;
-          padding: 4rem 1rem;
           transition: background 0.3s ease;
         }
 
