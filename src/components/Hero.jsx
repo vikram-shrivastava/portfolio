@@ -32,7 +32,7 @@ const Hero=({ setHeroInView })=> {
           `}
         />
       </div>
-      <img src="public\images\ProfileImage.webp" alt="myimage" className="w-full max-w-md h-auto object-cover rounded-3xl shadow-md mb-4 border-4 border-gray-400 dark:border-blue-500 py-2 px-2 animate-fade-in-down mt-24"/>
+      <img src="/images/ProfileImage.webp" alt="myimage" className="w-full max-w-md h-auto object-cover rounded-3xl shadow-md mb-4 border-4 border-gray-400 dark:border-blue-500 py-2 px-2 animate-fade-in-down mt-24"/>
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 max-w-screen-lg">
         <h1
