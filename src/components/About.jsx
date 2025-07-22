@@ -82,7 +82,7 @@ function About() {
     <motion.section
       className={`about-section ${
         isDarkMode ? "dark" : "light"
-      } border-t dark:border-gray-400 border-gray-700 min-h-screen pt-28 `}
+      }  dark:border-gray-400 border-gray-700 min-h-screen pt-24 `}
       initial="hidden"
       animate="visible"
       variants={containerVariants}

@@ -11,7 +11,7 @@ function Footer({ showScrollToTop }) {
     <footer
       className={`
         w-full px-6 pt-6 pb-10 text-sm md:text-base transition-all duration-500
-        ${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"}
+        ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}
       `}
     >
       {/* Top horizontal divider */}

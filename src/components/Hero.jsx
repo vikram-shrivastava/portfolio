@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import { useTheme } from "../context/Themecontext.jsx";
 import { useInView } from "react-intersection-observer";
+import ProfileImage from "../../public/images/ProfileImage.webp";
+import {motion} from "framer-motion";
 const Hero=({ setHeroInView })=> {
   const [ ref, inView ] = useInView({ threshold: 0.2 });
   const { isDarkMode } = useTheme();
@@ -18,6 +20,7 @@ const Hero=({ setHeroInView })=> {
       `}
       id='home'
     >
+      
       {/* Animated Background Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <span
@@ -29,7 +32,7 @@ const Hero=({ setHeroInView })=> {
           `}
         />
       </div>
-
+      <img src="public\images\ProfileImage.webp" alt="myimage" className="w-full max-w-md h-auto object-cover rounded-3xl shadow-md mb-4 border-4 border-gray-400 dark:border-blue-500 py-2 px-2 animate-fade-in-down mt-24"/>
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 max-w-screen-lg">
         <h1
@@ -52,7 +55,7 @@ const Hero=({ setHeroInView })=> {
         <a
           href="#contact"
           className={`
-            mt-4 px-8 py-3 rounded-full font-semibold shadow-lg transition
+            mt-4 mb-4 px-8 py-3 rounded-full font-semibold shadow-lg transition
             ${isDarkMode 
               ? 'bg-blue-700 hover:bg-blue-600 text-white'
               : 'bg-blue-600 hover:bg-blue-700 text-white'}

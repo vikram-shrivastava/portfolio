@@ -39,14 +39,14 @@ function Projects() {
           <motion.div
             key={index}
             className={`rounded-xl shadow-lg overflow-hidden transition transform hover:-translate-y-2 hover:shadow-2xl ${
-              isDarkMode ? "bg-gray-800" : "bg-white"
+              isDarkMode ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-100 hover:bg-gray-200"
             }`}
             initial={{ opacity: 0, y: 100, scale: 0.8 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            whileInView={{ opacity: 1, y: 100, scale: 1 }}
             transition={{
-              type: "tween",
-              ease: "easeOut",
-              duration: 0.6,
+              // type: "spring",
+              ease: "anticipate",
+              duration: 0.4,
               delay: index * 0.2,
             }}
             viewport={{ once: false, amount: 0.3 }} // ← IMPORTANT!
