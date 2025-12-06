@@ -1,298 +1,129 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaGraduationCap,
-  FaReact,
-  FaNodeJs,
-  FaJs,
-  FaDatabase,
-  FaGithub,
-} from "react-icons/fa";
-import { DiRedis } from "react-icons/di";
-import { TbBrandNextjs, TbBrandCpp } from "react-icons/tb";
 import { useTheme } from "../context/Themecontext.jsx";
-import { BiLogoMongodb, BiLogoPostgresql } from "react-icons/bi";
-import {
-  SiRedux,
-  SiExpress,
-  SiNextdotjs,
-  SiReactrouter,
-  SiNextdotjs as NextAuthIcon,
-} from "react-icons/si";
-
-const skills = [
-  // Core Languages
-  { name: "JavaScript", icon: <FaJs color="#f7df1e" /> },
-  { name: "C++", icon: <TbBrandCpp /> },
-  { name: "SQL", icon: <FaDatabase color="#00758f" /> },
-
-  // Frontend
-  { name: "React.js", icon: <FaReact color="#61dafb" /> },
-  { name: "Next.js", icon: <TbBrandNextjs /> },
-  { name: "Redux Toolkit", icon: <SiRedux color="#764abc" /> },
-  { name: "React Router", icon: <SiReactrouter color="#CA4245" /> },
-
-  // Backend
-  { name: "Node.js", icon: <FaNodeJs color="#3c873a" /> },
-  { name: "Express.js", icon: <SiExpress color="#000000" /> },
-  { name: "NextAuth.js", icon: <NextAuthIcon color="#000000" /> },
-
-  // Databases
-  { name: "MongoDB", icon: <BiLogoMongodb color="#47A248" /> },
-  { name: "PostgreSQL", icon: <BiLogoPostgresql color="#336791" /> },
-  { name: "Redis", icon: <DiRedis color="#D82C20" /> },
-
-  // Tools
-  { name: "GitHub", icon: <FaGithub /> },
-];
-
-const education = [
-  {
-    year: "2022 - 2026",
-    degree: "BTech Computer Science",
-    institution: "JD College of Engineering and Management",
-    icon: <FaGraduationCap />,
-  },
-  {
-    year: "2020 - 2022",
-    degree: "XII Science (HSC Board)",
-    institution: "Sree Narayana Vidhalaya",
-    icon: <FaGraduationCap />,
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
+import { FaGraduationCap, FaBriefcase, FaCode, FaBrain } from "react-icons/fa";
 
 function About() {
   const { isDarkMode } = useTheme();
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <motion.section
-      className={`about-section ${
-        isDarkMode ? "dark" : "light"
-      }  dark:border-gray-400 border-gray-700 min-h-screen pt-24 `}
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      id="about"
-    >
-      <div className="about-container">
-        <motion.h1
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          className="about-title"
+    <section id="about" className={`py-20 px-6 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          About Me
-        </motion.h1>
-
-        <motion.p
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          className="about-desc"
-        >
-          Hi, I'm <b className="text-primary">Vikram Shrivastav</b>, a Full
-          Stack Developer specializing in modern JavaScript ecosystems like MERN
-          and Next.js, passionate about building fast, scalable, and
-          user-centric web applications. I blend strong UI/UX skills with
-          backend efficiency and system-level thinking, always eager to learn
-          and adapt to emerging technologies like GenAI and Data Science.
-        </motion.p>
-
-        {/* Education Timeline */}
-        <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          className="timeline-container"
-        >
-          <h2 className="section-subtitle">Education</h2>
-          <div className="timeline">
-            {education.map((item, idx) => (
-              <motion.div
-                key={idx}
-                className="timeline-item"
-                variants={itemVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-              >
-                <div className="timeline-icon">{item.icon}</div>
-                <div className="timeline-details">
-                  <div className="timeline-degree">{item.degree}</div>
-                  <div className="timeline-inst">{item.institution}</div>
-                  <div className="timeline-year">{item.year}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+          <div className="h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
         </motion.div>
 
-        {/* Skills Section */}
-        <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          className="pb-7"
-        >
-          <label id="skills"></label>
-          <h2 className="section-subtitle pt-32">Skills</h2>
-          <div className="skills-list">
-            {skills.map((skill) => (
-              <motion.div
-                key={skill.name}
-                whileHover={{ scale: 1.05 }}
-                className="skill-item"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-              >
-                {skill.icon}
-                <span>{skill.name}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {/* Main Intro Card - Spans 2 cols */}
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className={`md:col-span-2 p-8 rounded-2xl shadow-sm border ${
+              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+            }`}
+          >
+            <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-blue-500/10 rounded-lg text-blue-500"><FaCode size={24}/></div>
+                <h3 className="text-xl font-bold">The Developer</h3>
+            </div>
+            <p className={`leading-relaxed ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
+              I am <strong className="text-blue-500">Vikram Shrivastav</strong>. 
+              I don't just write code; I engineer solutions. Specializing in the 
+              <span className="font-semibold"> MERN Stack</span> and <span className="font-semibold">Next.js</span>, 
+              I bridge the gap between complex backend logic and silky-smooth frontend interactions.
+              Currently exploring the frontiers of <span className="text-purple-500 font-medium">Generative AI</span> to 
+              build smarter applications.
+            </p>
+          </motion.div>
+
+          {/* Education Card */}
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className={`p-8 rounded-2xl shadow-sm border ${
+              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+            }`}
+          >
+            <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-green-500/10 rounded-lg text-green-500"><FaGraduationCap size={24}/></div>
+                <h3 className="text-xl font-bold">Education</h3>
+            </div>
+            <ul className="space-y-4">
+                <li className="relative pl-4 border-l-2 border-gray-300 dark:border-gray-600">
+                    <div className="font-semibold">B.Tech Computer Science</div>
+                    <div className="text-xs opacity-70">JD College (2022-2026)</div>
+                </li>
+                <li className="relative pl-4 border-l-2 border-gray-300 dark:border-gray-600">
+                    <div className="font-semibold">HSC Science</div>
+                    <div className="text-xs opacity-70">Sree Narayana (2020-2022)</div>
+                </li>
+            </ul>
+          </motion.div>
+
+          {/* Philosophy/Interests Card */}
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className={`p-8 rounded-2xl shadow-sm border ${
+              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+            }`}
+          >
+            <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-purple-500/10 rounded-lg text-purple-500"><FaBrain size={24}/></div>
+                <h3 className="text-xl font-bold">Focus Area</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+                {['System Design', 'GenAI Integration', 'Data Structures', 'SAAS Application', 'Clean Code'].map(tag => (
+                    <span key={tag} className={`px-3 py-1 text-xs rounded-full border ${isDarkMode ? "border-gray-600 bg-gray-700" : "border-gray-200 bg-gray-50"}`}>
+                        {tag}
+                    </span>
+                ))}
+            </div>
+          </motion.div>
+
+           {/* Experience / Goal Card - Spans 2 cols */}
+           <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className={`md:col-span-2 p-8 rounded-2xl shadow-sm border ${
+              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
+            }`}
+          >
+            <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-orange-500/10 rounded-lg text-orange-500"><FaBriefcase size={24}/></div>
+                <h3 className="text-xl font-bold">What I Bring</h3>
+            </div>
+            <p className={`leading-relaxed ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
+             I blend strong technical skills with a product mindset. Whether it's optimizing database queries, 
+             designing a pixel-perfect component in React, or fine-tuning an LLM prompt, I focus on <span className="font-semibold">performance, scalability, and user experience</span>.
+            </p>
+          </motion.div>
+
+        </div>
       </div>
-
-      <style>{`
-        .about-section {
-          width: 100%;
-          transition: background 0.3s ease;
-        }
-
-        .about-section.light {
-          background: #f9fafb;
-          color: #1f2937;
-        }
-
-        .about-section.dark {
-          background: #0f172a;
-          color: #f1f5f9;
-        }
-
-        .about-container {
-          max-width: 900px;
-          margin: auto;
-          padding: 2rem;
-        }
-
-        .about-title {
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 1.5rem;
-          text-align: center;
-        }
-
-        .about-desc {
-          font-size: 1.125rem;
-          margin-bottom: 2.5rem;
-          line-height: 1.8;
-          text-align: center;
-        }
-
-        .text-primary {
-          color: #3b82f6;
-        }
-
-        .section-subtitle {
-          font-size: 1.5rem;
-          font-weight: 600;
-          margin-bottom: 1.2rem;
-          text-align: center;
-        }
-
-        .timeline {
-          display: flex;
-          flex-direction: column;
-          gap: 1.8rem;
-        }
-
-        .timeline-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 1rem;
-        }
-
-        .timeline-icon {
-          font-size: 1.5rem;
-          color: #3b82f6;
-        }
-
-        .timeline-degree {
-          font-weight: 600;
-          font-size: 1.1rem;
-        }
-
-        .timeline-inst {
-          color: #6b7280;
-        }
-
-        .dark .timeline-inst {
-          color: #cbd5e1;
-        }
-
-        .timeline-year {
-          font-size: 0.9rem;
-          color: #9ca3af;
-        }
-
-        .dark .timeline-year {
-          color: #94a3b8;
-        }
-
-        .skills-list {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-          justify-content: center;
-          margin-top: 1.5rem;
-        }
-
-        .skill-item {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          background: #e5e7eb;
-          padding: 0.6rem 1.2rem;
-          border-radius: 9999px;
-          font-weight: 500;
-          font-size: 1rem;
-          cursor: default;
-        }
-
-        .about-section.dark .skill-item {
-          background: #1e293b;
-          color: #f9fafb;
-        }
-
-        @media (max-width: 640px) {
-          .about-title {
-            font-size: 2rem;
-          }
-          .section-subtitle {
-            font-size: 1.25rem;
-          }
-        }
-      `}</style>
-    </motion.section>
+    </section>
   );
 }
 

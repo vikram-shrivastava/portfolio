@@ -4,7 +4,7 @@ import Hero from "./Hero.jsx";
 import Projects from "./Projects.jsx";
 import Header from "./Header.jsx";
 import Contact from "./Contact.jsx";
-import LazySection from "../utils/LazySection.jsx";
+import Skills from "./skills.jsx";
 import { useState } from "react";
 function Page() {
   const [isHeroInView, setHeroInView] = useState(true);
@@ -13,15 +13,10 @@ function Page() {
       <Header />
       <main>
         <Hero setHeroInView={setHeroInView}/>
-        <LazySection>
           <About />
-        </LazySection>
-        <LazySection>
+          <Skills />
           <Projects />
-        </LazySection>
-        <LazySection>
           <Contact />
-        </LazySection>
       </main>
       <Footer showScrollToTop={!isHeroInView}/>
     </div>

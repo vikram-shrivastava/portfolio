@@ -1,132 +1,62 @@
 import React from "react";
-import { useTheme } from "../context/Themecontext";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-
-import {
-  FaEnvelope,
-  FaPhoneAlt,
-  FaLinkedin,
-  FaGithub,
-  FaCode,
-} from "react-icons/fa";
+import { useTheme } from "../context/Themecontext.jsx";
+import { motion } from "framer-motion";
+import { FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 function Contact() {
   const { isDarkMode } = useTheme();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { threshold: 0.1, triggerOnce: true });
 
-  const contactInfo = [
-    {
-      icon: <FaEnvelope />,
-      label: "Email",
-      value: "vikrampshrivastav@gmail.com",
-    },
-    {
-      icon: <FaPhoneAlt />,
-      label: "Phone",
-      value: "+91-9021077286",
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: <FaLinkedin />,
-      label: "LinkedIn",
-      value: "linkedin",
-      link: "https://linkedin.com/in/vikramshrivastav",
-    },
-    {
-      icon: <FaGithub />,
-      label: "GitHub",
-      value: "github",
-      link: "https://github.com/vikram-shrivastava",
-    },
-    {
-      icon: <FaCode />,
-      label: "LeetCode",
-      value: "leetcode",
-      link: "https://leetcode.com/u/vikrams_13/",
-    },
+  const contacts = [
+    { icon: <FaEnvelope />, label: "Email", value: "vikrampshrivastav@gmail.com", href: "mailto:vikrampshrivastav@gmail.com" },
+    { icon: <FaLinkedin />, label: "LinkedIn", value: "Connect", href: "https://linkedin.com/in/vikramshrivastav" },
+    { icon: <FaGithub />, label: "GitHub", value: "Follow", href: "https://github.com/vikram-shrivastava" },
+    { icon: <SiLeetcode />, label: "LeetCode", value: "Solve", href: "https://leetcode.com/u/vikrams_13/" },
   ];
 
   return (
-    <>
-      <section
-        ref={ref}
-        className={`py-28 px-6 md:px-20 transition-colors duration-500 min-h-screen ${
-          isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-        }`}
-        id="contact"
-      >
-        <motion.h2
-          initial={{ opacity: 0, y: -30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-3xl md:text-4xl font-bold text-center mb-12 "
+    <section id="contact" className={`py-24 px-6 ${isDarkMode ? "bg-gray-950" : "bg-gray-100"}`}>
+      <div className="max-w-4xl mx-auto text-center">
+        <motion.div
+           initial={{ opacity: 0, scale: 0.9 }}
+           whileInView={{ opacity: 1, scale: 1 }}
+           viewport={{ once: true }}
         >
-          Contact Me
-        </motion.h2>
+             <h2 className="text-3xl md:text-5xl font-bold mb-6">Let's Work Together</h2>
+             <p className={`text-lg mb-12 max-w-2xl mx-auto ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+                Have a project in mind or want to discuss the latest in GenAI? 
+                I'm always open to new opportunities and interesting conversations.
+             </p>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            {contactInfo.map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center gap-2 p-4 rounded-lg shadow-md transition hover:scale-105 duration-300 ${
-                  isDarkMode
-                    ? "bg-gray-800 hover:bg-gray-700"
-                    : "bg-gray-100 hover:bg-gray-200"
-                }`}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="text-2xl text-blue-600">{item.icon}</div>
-                <div>
-                  <p className="text-sm font-medium text-blue-500">
-                    {item.label}
-                  </p>
-                  <p className="text-lg font-semibold break-all">{item.value}</p>
-                </div>
-              </motion.a>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {contacts.map((item, index) => (
+                <motion.a
+                    key={index}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    whileHover={{ y: -5, borderColor: "#3b82f6" }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`flex flex-col items-center justify-center p-8 rounded-2xl border transition-all group ${
+                        isDarkMode 
+                        ? "bg-gray-900 border-gray-800 hover:bg-gray-800" 
+                        : "bg-white border-gray-200 hover:bg-gray-50"
+                    }`}
+                >
+                    <div className="text-3xl mb-3 text-gray-400 group-hover:text-blue-500 transition-colors">
+                        {item.icon}
+                    </div>
+                    <div className="font-semibold text-lg">{item.label}</div>
+                    <div className="text-sm opacity-60 mt-1">{item.value}</div>
+                </motion.a>
             ))}
-          </div>
-
-          {/* Social Links */}
-          <div className="space-y-6">
-            {socialLinks.map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center gap-4 p-4 rounded-lg shadow-md transition hover:scale-105 duration-300 ${
-                  isDarkMode
-                    ? "bg-gray-800 hover:bg-gray-700"
-                    : "bg-gray-100 hover:bg-gray-200"
-                }`}
-                initial={{ opacity: 0, x: -30 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="text-2xl text-blue-600">{item.icon}</div>
-                <div>
-                  <p className="text-sm font-medium text-blue-500">
-                    {item.label}
-                  </p>
-                  <p className="text-lg font-semibold">{item.value}</p>
-                </div>
-              </motion.a>
-            ))}
-          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
 

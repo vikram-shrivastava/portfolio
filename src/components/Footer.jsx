@@ -1,112 +1,35 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Link } from "react-scroll";
-import { useTheme } from "../context/Themecontext";
+import { useTheme } from "../context/Themecontext.jsx";
 import { FaArrowUp } from "react-icons/fa";
-import { AnimatePresence } from "framer-motion";
+import { Link } from "react-scroll";
 
 function Footer({ showScrollToTop }) {
   const { isDarkMode } = useTheme();
+
   return (
-    <footer
-      className={`
-        w-full px-6 pt-6 pb-10 text-sm md:text-base transition-all duration-500
-        ${isDarkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"}
-      `}
-    >
-      {/* Top horizontal divider */}
-      <div
-        className="w-full border-t mb-8"
-        style={{ borderColor: isDarkMode ? "#2d3748" : "#e2e8f0" }}
-      ></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between  md:justify-center items-center space-y-6 md:space-y-0"
-      >
-        {/* Navigation Links */}
-        <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-center">
-          <Link
-            to="home"
-            smooth
-            duration={500}
-            className="cursor-pointer hover:underline"
-          >
-            Home
-          </Link>
-          <Link
-            to="about"
-            smooth
-            duration={500}
-            className="cursor-pointer hover:underline"
-          >
-            About
-          </Link>
-          <Link
-            to="projects"
-            smooth
-            duration={500}
-            className="cursor-pointer hover:underline"
-          >
-            Projects
-          </Link>
-          <Link
-            to="contact"
-            smooth
-            duration={500}
-            className="cursor-pointer hover:underline"
-          >
-            Contact
-          </Link>
-          <a
-            href="/Vikram_Shrivastav_Resume.pdf"
-            download
-            className={`
-              px-4 py-2 rounded-full font-semibold shadow-md transition-all duration-300 w-36 mx-2 md:w-44 text-center
-              ${
-                isDarkMode
-                  ? "bg-blue-700 text-white hover:bg-blue-600"
-                  : "bg-blue-600 text-white hover:bg-blue-700"
-              }
-            `}
-          >
-            Download Resume
-          </a>
+    <footer className={`py-8 border-t ${isDarkMode ? "bg-gray-950 border-gray-800 text-gray-400" : "bg-white border-gray-200 text-gray-600"}`}>
+      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="text-sm">
+          © 2025 Vikram Shrivastav. Built with React & Framer Motion.
         </div>
+        
+        <div className="flex gap-6 text-sm font-medium">
+             <Link to="home" smooth duration={500} className="cursor-pointer hover:text-blue-500">Home</Link>
+             <Link to="projects" smooth duration={500} className="cursor-pointer hover:text-blue-500">Projects</Link>
+             <Link to="contact" smooth duration={500} className="cursor-pointer hover:text-blue-500">Contact</Link>
+        </div>
+      </div>
 
-        {/* Copyright */}
-        <p className="text-center opacity-70">
-          © 2025 Vikram Shrivastav. All rights reserved.
-        </p>
-      </motion.div>
-
-      {/* Back to top button */}
-      <AnimatePresence>
-        {showScrollToTop && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 30 }}
-            transition={{ duration: 0.4 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            className="fixed bottom-6 right-6 z-50 cursor-pointer"
-          >
-            <Link to="home" smooth duration={500}>
-              <div
-                className={`p-3 rounded-full shadow-lg transition
-            ${
-              isDarkMode ? "bg-blue-700 text-white" : "bg-blue-600 text-white"
-            }`}
-              >
-                <FaArrowUp />
-              </div>
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {showScrollToTop && (
+        <Link 
+            to="home" 
+            smooth 
+            duration={800} 
+            className="fixed bottom-8 right-8 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 hover:scale-110 transition cursor-pointer z-40"
+        >
+            <FaArrowUp />
+        </Link>
+      )}
     </footer>
   );
 }
