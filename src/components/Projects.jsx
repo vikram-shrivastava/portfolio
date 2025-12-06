@@ -16,7 +16,7 @@ const projectsData = [
     name: "NexusCreate",
     image: "/images/nexuscreate.png",
     description: "A collaborative platform for creators to share, discuss, and monetize digital content seamlessly.",
-    tech: ["Nextjs ", "", "Stripe API"],
+    tech: ["Nextjs ", "Stripe API"],
     liveLink: "https://nexuscreate.vikramshrivastav.app/",
     githubLink: "https://github.com/vikram-shrivastava/nexuscreate"
   }
