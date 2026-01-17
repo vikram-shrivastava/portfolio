@@ -16,19 +16,18 @@ const projectsData = [
     name: "NexusCreate",
     image: "/images/nexuscreate.png",
     description: "A collaborative platform for creators to share, discuss, and monetize digital content seamlessly.",
-    tech: ["Nextjs ", "Stripe API"],
+    tech: ["Nextjs ", "MongoDB", "TailwindCSS"],
     liveLink: "https://nexuscreate.vikramshrivastav.app/",
     githubLink: "https://github.com/vikram-shrivastava/nexuscreate"
+  },
+  {
+    name:"ResumeRanker",
+    image:"/images/resumeranker.png",
+    description:"A web application that helps students rank their resume and provides Resume Tailoring with just one click.",
+    tech:["Nextjs","TailwindCSS","LangGraph","OpenAI API","MongoDB","Express.js"],
+    liveLink:"https://resumeranker.vikramshrivastav.app/",
+    githubLink:"https://github.com/vikram-shrivastava/ResumeRanker-Frontend"
   }
-  // Add placeholder for better visual check if you have only 1 project
-  // {
-  //   name: "Portfolio V1",
-  //   image: "https://via.placeholder.com/600x400", 
-  //   description: "My previous personal website built with basic HTML/CSS.",
-  //   tech: ["React", "CSS"],
-  //   liveLink: "#",
-  //   githubLink: "#",
-  // }
 ];
 
 function Projects() {
