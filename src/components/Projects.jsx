@@ -5,6 +5,30 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projectsData = [
   {
+    name: "DocsAgent",
+    image: "/images/docsagent.png",
+    description: "An AI collaborative platform to chat with document in a team environment.",
+    tech: ["Next.js", "FastAPI", "LangGraph", "Mem0", "Qdrant-DB","MongoDB","TailwindCSS"],
+    liveLink: "https://docs-agent.vercel.app/",
+    githubLink: "https://github.com/vikram-shrivastava/docsAgent", 
+  },
+  {
+    name:"ResumeRanker",
+    image:"/images/resumeranker.png",
+    description:"A web application that helps students rank their resume and provides Resume Tailoring with just one click.",
+    tech:["Nextjs","TailwindCSS","LangGraph","OpenAI LLM","MongoDB","Express.js"],
+    liveLink:"https://resumeranker.vikramshrivastav.app/",
+    githubLink:"https://github.com/vikram-shrivastava/ResumeRanker-Frontend"
+  },
+  {
+    name: "NexusCreate",
+    image: "/images/nexuscreate.png",
+    description: "A collaborative platform for creators to share, discuss, and monetize digital content seamlessly.",
+    tech: ["Nextjs ", "MongoDB", "TailwindCSS","LangChain","OpenAI LLM"],
+    liveLink: "https://nexuscreate.vikramshrivastav.app/",
+    githubLink: "https://github.com/vikram-shrivastava/nexuscreate"
+  },
+    {
     name: "Mystery Feedback",
     image: "/images/mysteryfeedback.png",
     description: "An anonymous feedback platform utilizing AI to filter content. Built for secure and honest communication.",
@@ -12,22 +36,6 @@ const projectsData = [
     liveLink: "https://mysteryfeedback.vikramshrivastav.app/",
     githubLink: "https://github.com/vikram-shrivastava/Mysteryfeedback", // Update with actual repo
   },
-  {
-    name: "NexusCreate",
-    image: "/images/nexuscreate.png",
-    description: "A collaborative platform for creators to share, discuss, and monetize digital content seamlessly.",
-    tech: ["Nextjs ", "MongoDB", "TailwindCSS"],
-    liveLink: "https://nexuscreate.vikramshrivastav.app/",
-    githubLink: "https://github.com/vikram-shrivastava/nexuscreate"
-  },
-  {
-    name:"ResumeRanker",
-    image:"/images/resumeranker.png",
-    description:"A web application that helps students rank their resume and provides Resume Tailoring with just one click.",
-    tech:["Nextjs","TailwindCSS","LangGraph","OpenAI API","MongoDB","Express.js"],
-    liveLink:"https://resumeranker.vikramshrivastav.app/",
-    githubLink:"https://github.com/vikram-shrivastava/ResumeRanker-Frontend"
-  }
 ];
 
 function Projects() {
