@@ -47,16 +47,8 @@ const projectsData = {
       name: "B2B Dropshipping Automation",
       image: "/images/dropshipping.png",
       description: "An automated B2B e-commerce platform connecting sellers to suppliers with white-label packaging and secure payment gateways.",
-      tech: ["Next.js", "Node.js", "Razorpay", "MongoDB", "Supplier Mapping"],
+      tech: ["Next.js", "Node.js", "Razorpay", "PostgreSQL", "Supplier Mapping", "Shopify Integration"],
       colSpan: "md:col-span-2",
-    },
-    {
-      name: "AuctionHere",
-      image: "/images/auction.png",
-      description: "A real-time bidding architecture featuring secure authentication, live WebSocket updates, and robust role-based access control.",
-      tech: ["React", "Express", "WebSockets", "GitHub Collab"],
-      githubLink: "https://github.com/vikram-shrivastava/auctionhere",
-      colSpan: "md:col-span-1",
     }
   ]
 };
