@@ -122,7 +122,9 @@ function Projects() {
                 <div className="relative z-10 flex flex-col justify-end h-full p-6 md:p-8">
                   <div className="flex justify-between items-end gap-4 mb-4">
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{project.name}</h3>
-                    <div className="flex gap-3 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    
+                    {/* CHANGED: Opacity is 100 on mobile, 0 on desktop until hovered */}
+                    <div className="flex gap-3 opacity-100 md:opacity-0 md:group-hover:opacity-100 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 transition-all duration-500">
                       {project.githubLink && (
                         <a href={project.githubLink} target="_blank" rel="noreferrer" className={`p-2.5 rounded-full border backdrop-blur-md transition-colors ${isDarkMode ? "bg-zinc-900/80 border-zinc-700 hover:bg-white hover:text-black" : "bg-white/80 border-zinc-200 hover:bg-black hover:text-white"}`}><FaGithub size={18} /></a>
                       )}

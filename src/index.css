@@ -36,7 +36,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Subtle cinematic noise overlay */
-.bg-noise {
-  background-image: url('/noise.png'); /* Add a 5% opacity noise texture */
-  background-blend-mode: overlay;
+/* Subtle cinematic noise overlay - Pure CSS */
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none; /* Ensures the noise doesn't block clicks */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04; /* Keep it very subtle (4%) */
+  mix-blend-mode: overlay; /* Blends it beautifully with the dark background */
 }

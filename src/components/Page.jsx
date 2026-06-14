@@ -22,7 +22,7 @@ function Page() {
       </main>
       <Footer showScrollToTop={!isHeroInView}/>
     </div>
-  );
+  );no
 }
 
 export default Page;

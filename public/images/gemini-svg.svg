@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <rect width="120" height="120" rx="28" fill="#09090b"/>
+  
+  <text 
+    x="36" 
+    y="88" 
+    font-family="-apple-system, BlinkMacSystemFont, 'Inter', sans-serif" 
+    font-weight="700" 
+    font-size="80" 
+    fill="#a1a1aa" 
+    letter-spacing="-4">
+    v
+  </text>
+  
+  <circle cx="86" cy="80" r="10" fill="#10b981"/>
+</svg>

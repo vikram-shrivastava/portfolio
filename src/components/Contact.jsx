@@ -51,8 +51,9 @@ function Contact() {
                   {/* Copy Email Button */}
                   <button 
                     onClick={handleCopyEmail}
-                    onMouseEnter={() => setIsEmailHovered(true)}
-                    onMouseLeave={() => setIsEmailHovered(false)}
+                    // ONLY trigger hover states if the user is using a physical mouse
+                    onPointerEnter={(e) => e.pointerType === "mouse" && setIsEmailHovered(true)}
+                    onPointerLeave={(e) => e.pointerType === "mouse" && setIsEmailHovered(false)}
                     className={`flex items-center justify-center gap-3 px-6 py-3 rounded-full border text-sm font-medium transition-all hover:-translate-y-1 min-w-[280px] ${
                       isDarkMode 
                         ? "bg-zinc-950 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-800 hover:border-zinc-700" 

@@ -78,14 +78,17 @@ const Hero = ({ setHeroInView }) => {
           </motion.div>
         </motion.div>
 
-        {/* Image Container with Hover Events */}
+       {/* Image Container with Hover & Touch Events */}
         <motion.div 
           initial={{ opacity: 0, filter: "blur(20px)" }} 
           animate={{ opacity: 1, filter: "blur(0px)" }} 
           transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }} 
-          className="relative flex-1 flex justify-center md:justify-end"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className="relative flex-1 flex justify-center md:justify-end cursor-pointer md:cursor-default"
+          // ONLY trigger on mouse hover
+          onPointerEnter={(e) => e.pointerType === "mouse" && setIsHovered(true)}
+          onPointerLeave={(e) => e.pointerType === "mouse" && setIsHovered(false)}
+          // Allow mobile users to tap to toggle the chat bubble
+          onClick={() => setIsHovered(!isHovered)}
         >
           {/* Animated Chat Bubble */}
           <AnimatePresence>
@@ -107,10 +110,9 @@ const Hero = ({ setHeroInView }) => {
           </AnimatePresence>
 
           <div className={`relative w-72 h-[400px] rounded-2xl overflow-hidden border ${isDarkMode ? "border-zinc-800 bg-zinc-900/50" : "border-zinc-200 bg-zinc-100"}`}>
-            {/* Subtle zoom instead of shake to keep it professional */}
             <motion.img 
               src="/images/ProfileImage.webp" 
-              alt="Vikram Shrivastav" 
+              alt="Profile" 
               className="w-full h-full object-cover transition-colors duration-700" 
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
