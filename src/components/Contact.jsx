@@ -1,60 +1,102 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTheme } from "../context/Themecontext.jsx";
-import { motion } from "framer-motion";
-import { FaEnvelope, FaPhoneAlt, FaLinkedin, FaGithub } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaEnvelope, FaLinkedin, FaGithub, FaCheck, FaCopy } from "react-icons/fa";
 
 function Contact() {
   const { isDarkMode } = useTheme();
+  const [copied, setCopied] = useState(false);
+  const [isEmailHovered, setIsEmailHovered] = useState(false);
 
-  const contacts = [
-    { icon: <FaEnvelope />, label: "Email", value: "vikrampshrivastav@gmail.com", href: "mailto:vikrampshrivastav@gmail.com" },
-    { icon: <FaLinkedin />, label: "LinkedIn", value: "Connect", href: "https://linkedin.com/in/vikramshrivastav" },
-    { icon: <FaGithub />, label: "GitHub", value: "Follow", href: "https://github.com/vikram-shrivastava" },
-    { icon: <SiLeetcode />, label: "LeetCode", value: "Solve", href: "https://leetcode.com/u/vikrams_13/" },
+  const emailAddress = "vikrampshrivastav@gmail.com";
+
+  // Function to handle clipboard copying
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setCopied(true);
+      // Reset the button back to default after 2 seconds
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy email: ", err);
+    }
+  };
+
+  const socialLinks = [
+    { icon: <FaLinkedin />, label: "LinkedIn", href: "https://linkedin.com/in/vikramshrivastav" },
+    { icon: <FaGithub />, label: "GitHub", href: "https://github.com/vikram-shrivastava" },
   ];
 
   return (
-    <section id="contact" className={`py-24 px-6 ${isDarkMode ? "bg-gray-950" : "bg-gray-100"}`}>
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="contact" className={`py-32 px-6 ${isDarkMode ? "bg-[#09090b]" : "bg-white"}`}>
+      <div className="max-w-4xl mx-auto">
         <motion.div
-           initial={{ opacity: 0, scale: 0.9 }}
-           whileInView={{ opacity: 1, scale: 1 }}
+           initial={{ opacity: 0, y: 40 }}
+           whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
+           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+           className={`p-10 md:p-16 rounded-3xl border text-center relative overflow-hidden ${
+             isDarkMode ? "bg-zinc-900/30 border-zinc-800" : "bg-zinc-50 border-zinc-200"
+           }`}
         >
-             <h2 className="text-3xl md:text-5xl font-bold mb-6">Let's Work Together</h2>
-             <p className={`text-lg mb-12 max-w-2xl mx-auto ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-                Have a project in mind or want to discuss the latest in GenAI? 
-                I'm always open to new opportunities and interesting conversations.
-             </p>
-        </motion.div>
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-zinc-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {contacts.map((item, index) => (
-                <motion.a
-                    key={index}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ y: -5, borderColor: "#3b82f6" }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className={`flex flex-col items-center justify-center p-8 rounded-2xl border transition-all group ${
-                        isDarkMode 
-                        ? "bg-gray-900 border-gray-800 hover:bg-gray-800" 
-                        : "bg-white border-gray-200 hover:bg-gray-50"
+             <div className="relative z-10">
+               <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6">Let's build something <br className="hidden md:block"/> extraordinary.</h2>
+               <p className={`text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light ${isDarkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                  Looking for a Full-Stack AI Engineer to join your team, or need an experienced freelancer to architect your next MVP? My inbox is always open.
+               </p>
+
+               <div className="flex flex-wrap justify-center gap-4">
+                  {/* Copy Email Button */}
+                  <button 
+                    onClick={handleCopyEmail}
+                    onMouseEnter={() => setIsEmailHovered(true)}
+                    onMouseLeave={() => setIsEmailHovered(false)}
+                    className={`flex items-center justify-center gap-3 px-6 py-3 rounded-full border text-sm font-medium transition-all hover:-translate-y-1 min-w-[280px] ${
+                      isDarkMode 
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-800 hover:border-zinc-700" 
+                        : "bg-white border-zinc-200 text-zinc-700 hover:text-black hover:bg-zinc-50 hover:border-zinc-300"
                     }`}
-                >
-                    <div className="text-3xl mb-3 text-gray-400 group-hover:text-blue-500 transition-colors">
-                        {item.icon}
-                    </div>
-                    <div className="font-semibold text-lg">{item.label}</div>
-                    <div className="text-sm opacity-60 mt-1">{item.value}</div>
-                </motion.a>
-            ))}
-        </div>
+                  >
+                      <span className="text-lg relative">
+                        {copied ? <FaCheck className="text-emerald-500" /> : isEmailHovered ? <FaCopy /> : <FaEnvelope />}
+                      </span>
+                      
+                      {/* Animated Text Swap */}
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={copied ? "copied" : isEmailHovered ? "hover" : "default"}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -5 }}
+                          transition={{ duration: 0.15 }}
+                        >
+                          {copied ? "Copied to clipboard!" : isEmailHovered ? "Click to copy email" : emailAddress}
+                        </motion.span>
+                      </AnimatePresence>
+                  </button>
+
+                  {/* Social External Links */}
+                  {socialLinks.map((item, index) => (
+                      <a 
+                        key={index} 
+                        href={item.href} 
+                        target="_blank" 
+                        rel="noreferrer" 
+                        className={`flex items-center gap-3 px-6 py-3 rounded-full border text-sm font-medium transition-all hover:-translate-y-1 ${
+                          isDarkMode 
+                            ? "bg-zinc-950 border-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-800 hover:border-zinc-700" 
+                            : "bg-white border-zinc-200 text-zinc-700 hover:text-black hover:bg-zinc-50 hover:border-zinc-300"
+                        }`}
+                      >
+                          <span className="text-lg">{item.icon}</span>
+                          {item.label}
+                      </a>
+                  ))}
+               </div>
+             </div>
+        </motion.div>
       </div>
     </section>
   );

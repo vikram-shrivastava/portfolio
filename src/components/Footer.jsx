@@ -7,16 +7,16 @@ function Footer({ showScrollToTop }) {
   const { isDarkMode } = useTheme();
 
   return (
-    <footer className={`py-8 border-t ${isDarkMode ? "bg-gray-950 border-gray-800 text-gray-400" : "bg-white border-gray-200 text-gray-600"}`}>
-      <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="text-sm">
-          © 2025 Vikram Shrivastav. Built with React & Framer Motion.
+    <footer className={`py-10 border-t ${isDarkMode ? "bg-[#09090b] border-zinc-900 text-zinc-500" : "bg-white border-zinc-100 text-zinc-400"}`}>
+      <div className="max-w-6xl mx-auto px-6 flex flex-col-reverse md:flex-row justify-between items-center gap-6">
+        <div className="text-sm font-light">
+          © {new Date().getFullYear()} Vikram Shrivastav. Engineered with precision.
         </div>
         
-        <div className="flex gap-6 text-sm font-medium">
-             <Link to="home" smooth duration={500} className="cursor-pointer hover:text-blue-500">Home</Link>
-             <Link to="projects" smooth duration={500} className="cursor-pointer hover:text-blue-500">Projects</Link>
-             <Link to="contact" smooth duration={500} className="cursor-pointer hover:text-blue-500">Contact</Link>
+        <div className="flex gap-8 text-sm font-medium">
+             <Link to="home" smooth duration={800} className="cursor-pointer transition-colors hover:text-zinc-900 dark:hover:text-zinc-200">Home</Link>
+             <Link to="projects" smooth duration={800} className="cursor-pointer transition-colors hover:text-zinc-900 dark:hover:text-zinc-200">Work</Link>
+             <Link to="contact" smooth duration={800} className="cursor-pointer transition-colors hover:text-zinc-900 dark:hover:text-zinc-200">Contact</Link>
         </div>
       </div>
 
@@ -24,10 +24,14 @@ function Footer({ showScrollToTop }) {
         <Link 
             to="home" 
             smooth 
-            duration={800} 
-            className="fixed bottom-8 right-8 p-3 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 hover:scale-110 transition cursor-pointer z-40"
+            duration={1000} 
+            className={`fixed bottom-8 right-8 p-3.5 rounded-full border shadow-xl transition-all hover:-translate-y-1 cursor-pointer z-40 backdrop-blur-md ${
+              isDarkMode 
+                ? "bg-zinc-900/80 border-zinc-700 text-zinc-400 hover:text-white hover:bg-zinc-800" 
+                : "bg-white/80 border-zinc-200 text-zinc-600 hover:text-black hover:bg-zinc-50"
+            }`}
         >
-            <FaArrowUp />
+            <FaArrowUp size={14} />
         </Link>
       )}
     </footer>

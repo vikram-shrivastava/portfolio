@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -6,4 +7,36 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --border: 240 5.9% 90%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%; /* Zinc 950 */
+    --foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Subtle cinematic noise overlay */
+.bg-noise {
+  background-image: url('/noise.png'); /* Add a 5% opacity noise texture */
+  background-blend-mode: overlay;
 }

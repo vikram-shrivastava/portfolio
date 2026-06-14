@@ -1,92 +1,113 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/Themecontext.jsx";
-import {
-  FaReact,
-  FaNodeJs,
-  FaJs,
-  FaGithub,
-  FaProjectDiagram,
-} from "react-icons/fa";
-import {
-  SiRedux,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiTypescript,
-  SiMongodb,
-  SiPostgresql,
-  SiRedis,
-  SiLangchain,
-} from "react-icons/si";
+import { FaReact, FaNodeJs, FaJs, FaGithub, FaProjectDiagram } from "react-icons/fa";
+import { SiRedux, SiNextdotjs, SiTailwindcss, SiTypescript, SiMongodb, SiPostgresql, SiRedis, SiLangchain } from "react-icons/si";
 
-const skills = [
-  { name: "React", icon: <FaReact color="#61dafb" /> },
-  { name: "Next.js", icon: <SiNextdotjs /> },
-  { name: "Node.js", icon: <FaNodeJs color="#3c873a" /> },
-  { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
-  { name: "JavaScript", icon: <FaJs color="#f7df1e" /> },
-  { name: "Redux", icon: <SiRedux color="#764abc" /> },
-  { name: "Tailwind", icon: <SiTailwindcss color="#06b6d4" /> },
-
-  // Databases
-  { name: "MongoDB", icon: <SiMongodb color="#47A248" /> },
-  { name: "PostgreSQL", icon: <SiPostgresql color="#336791" /> },
-  { name: "Redis", icon: <SiRedis color="#D82C20" /> },
-
-  // GenAI
-  { name: "LangChain", icon: <SiLangchain color="#1c3c3c" /> },
-  { name: "LangGraph", icon: <FaProjectDiagram color="#6366f1" /> },
-
-  { name: "GitHub", icon: <FaGithub /> },
+const skillCategories = [
+  {
+    category: "Frontend Architecture",
+    description: "Building responsive, cinematic user interfaces.",
+    skills: [
+      { name: "React", icon: <FaReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "TypeScript", icon: <SiTypescript /> },
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+      { name: "Redux", icon: <SiRedux /> },
+    ],
+  },
+  {
+    category: "Backend & Systems",
+    description: "Designing scalable APIs and robust data pipelines.",
+    skills: [
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "PostgreSQL", icon: <SiPostgresql /> },
+      { name: "Redis", icon: <SiRedis /> },
+      { name: "JavaScript", icon: <FaJs /> },
+    ],
+  },
+  {
+    category: "GenAI & Orchestration",
+    description: "Integrating LLMs and intelligent agentic workflows.",
+    skills: [
+      { name: "LangChain", icon: <SiLangchain /> },
+      { name: "LangGraph", icon: <FaProjectDiagram /> },
+      { name: "GitHub Workflows", icon: <FaGithub /> },
+    ],
+  },
 ];
 
 function Skills() {
   const { isDarkMode } = useTheme();
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  };
+
   return (
-    <section
-      id="skills"
-      className={`py-20 px-6 ${isDarkMode ? "bg-gray-950" : "bg-white"}`}
-    >
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className={`py-24 px-6 relative overflow-hidden ${isDarkMode ? "bg-[#09090b] text-zinc-50" : "bg-zinc-50 text-zinc-950"}`}>
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16 md:mb-24"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Technical Arsenal
-          </h2>
-          <p className="opacity-70">The tools I use to bring ideas to life</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Technical Arsenal.</h2>
+          <p className={`text-lg max-w-2xl font-light ${isDarkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+            The frameworks, databases, and AI orchestration tools I utilize to engineer full-stack solutions.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-          {skills.map((skill, index) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid md:grid-cols-3 gap-6"
+        >
+          {skillCategories.map((group, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ y: -5, scale: 1.05 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className={`flex flex-col items-center justify-center p-6 rounded-xl border transition-shadow duration-300 ${
-                isDarkMode
-                  ? "bg-gray-900 border-gray-800 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]"
-                  : "bg-gray-50 border-gray-200 hover:shadow-lg"
+              variants={cardVariants}
+              className={`p-8 rounded-2xl border flex flex-col h-full transition-colors duration-500 hover:border-zinc-500/50 ${
+                isDarkMode ? "bg-zinc-900/40 border-zinc-800" : "bg-white border-zinc-200"
               }`}
             >
-              <div className="text-4xl mb-3">{skill.icon}</div>
-              <span
-                className={`font-medium ${
-                  isDarkMode ? "text-gray-300" : "text-gray-700"
-                }`}
-              >
-                {skill.name}
-              </span>
+              <h3 className="text-xl font-semibold mb-2">{group.category}</h3>
+              <p className={`text-sm mb-8 font-light ${isDarkMode ? "text-zinc-500" : "text-zinc-500"}`}>
+                {group.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-3 mt-auto">
+                {group.skills.map((skill, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center gap-2 px-3 py-1.5 text-sm rounded-md border transition-all duration-300 ${
+                      isDarkMode
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-zinc-50"
+                        : "bg-zinc-50 border-zinc-200 text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900"
+                    }`}
+                  >
+                    <span className="opacity-70">{skill.icon}</span>
+                    <span className="font-medium">{skill.name}</span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

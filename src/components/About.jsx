@@ -1,126 +1,64 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/Themecontext.jsx";
-import { FaGraduationCap, FaBriefcase, FaCode, FaBrain } from "react-icons/fa";
 
 function About() {
   const { isDarkMode } = useTheme();
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <section id="about" className={`py-20 px-6 ${isDarkMode ? "bg-gray-900" : "bg-gray-100"}`}>
+    <section id="about" className={`py-24 px-6 ${isDarkMode ? "bg-[#09090b]" : "bg-zinc-50"}`}>
       <div className="max-w-6xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-          <div className="h-1 w-20 bg-blue-500 mx-auto rounded-full"></div>
-        </motion.div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          <div className="lg:col-span-4">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="sticky top-32">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">About Me.</h2>
+              <p className={`text-lg font-light ${isDarkMode ? "text-zinc-400" : "text-zinc-600"}`}>
+                Bridging the gap between complex backend logic and business-driven results.
+              </p>
+            </motion.div>
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Main Intro Card - Spans 2 cols */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className={`md:col-span-2 p-8 rounded-2xl shadow-sm border ${
-              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
-            }`}
-          >
-            <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-blue-500/10 rounded-lg text-blue-500"><FaCode size={24}/></div>
-                <h3 className="text-xl font-bold">The Developer</h3>
-            </div>
-            <p className={`leading-relaxed ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
-              I am <strong className="text-blue-500">Vikram Shrivastav</strong>. 
-              I don't just write code; I engineer solutions. Specializing in the 
-              <span className="font-semibold"> MERN Stack</span> and <span className="font-semibold">Next.js</span>, 
-              I bridge the gap between complex backend logic and silky-smooth frontend interactions.
-              Currently exploring the frontiers of <span className="text-purple-500 font-medium">Generative AI</span> to 
-              build smarter applications.
-            </p>
-          </motion.div>
+          <div className="lg:col-span-8 flex flex-col gap-12">
+            
+            {/* The Dual Identity */}
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <h3 className="text-xl font-semibold mb-4 border-b pb-2 border-zinc-200 dark:border-zinc-800">Consultant & Engineer</h3>
+              <p className={`leading-relaxed text-lg font-light ${isDarkMode ? "text-zinc-300" : "text-zinc-700"}`}>
+                I am <strong className={isDarkMode ? "text-white" : "text-black"}>Vikram Shrivastav</strong>. 
+                Whether I am building internal platforms as an AI Engineer or architecting custom solutions for freelance clients, my approach remains the same: <span className="font-medium">engineer for scale, design for the user.</span> By specializing in the MERN stack and GenAI orchestration, I help startups and businesses turn complex product requirements into seamless, production-ready applications.
+              </p>
+            </motion.div>
 
-          {/* Education Card */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className={`p-8 rounded-2xl shadow-sm border ${
-              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
-            }`}
-          >
-            <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-green-500/10 rounded-lg text-green-500"><FaGraduationCap size={24}/></div>
-                <h3 className="text-xl font-bold">Education</h3>
-            </div>
-            <ul className="space-y-4">
-                <li className="relative pl-4 border-l-2 border-gray-300 dark:border-gray-600">
-                    <div className="font-semibold">B.Tech Computer Science</div>
-                    <div className="text-xs opacity-70">JD College (2022-2026)</div>
-                </li>
-                <li className="relative pl-4 border-l-2 border-gray-300 dark:border-gray-600">
-                    <div className="font-semibold">HSC Science</div>
-                    <div className="text-xs opacity-70">Sree Narayana (2020-2022)</div>
-                </li>
-            </ul>
-          </motion.div>
+            {/* Existing Education & Focus Code... */}
+            <div className="grid md:grid-cols-2 gap-8">
+               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}>
+                <h3 className="text-xl font-semibold mb-4 border-b pb-2 border-zinc-200 dark:border-zinc-800">Background</h3>
+                <div className="space-y-6">
+                    <div className="relative pl-4 border-l border-zinc-300 dark:border-zinc-700">
+                        <div className="font-medium text-lg">AI Engineering Intern</div>
+                        <div className={`text-sm ${isDarkMode ? "text-zinc-400" : "text-zinc-600"}`}>Resellpur</div>
+                    </div>
+                    <div className="relative pl-4 border-l border-zinc-300 dark:border-zinc-700">
+                        <div className="font-medium text-lg">B.Tech Computer Science</div>
+                        <div className={`text-sm ${isDarkMode ? "text-zinc-400" : "text-zinc-600"}`}>JD College of Engineering (2022-2026)</div>
+                    </div>
+                </div>
+              </motion.div>
 
-          {/* Philosophy/Interests Card */}
-          <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className={`p-8 rounded-2xl shadow-sm border ${
-              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
-            }`}
-          >
-            <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-purple-500/10 rounded-lg text-purple-500"><FaBrain size={24}/></div>
-                <h3 className="text-xl font-bold">Focus Area</h3>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
+                <h3 className="text-xl font-semibold mb-4 border-b pb-2 border-zinc-200 dark:border-zinc-800">Core Focus</h3>
+                <div className="flex flex-wrap gap-2 mt-4">
+                    {['Product Strategy', 'LLM Pipelines', 'System Architecture', 'Client Delivery', 'Clean Code'].map(tag => (
+                        <span key={tag} className={`px-3 py-1.5 text-sm rounded-md border font-medium ${isDarkMode ? "border-zinc-800 bg-zinc-900/50 text-zinc-300" : "border-zinc-200 bg-zinc-100 text-zinc-700"}`}>
+                            {tag}
+                        </span>
+                    ))}
+                </div>
+              </motion.div>
             </div>
-            <div className="flex flex-wrap gap-2">
-                {['System Design', 'GenAI Integration', 'Data Structures', 'SAAS Application', 'Clean Code'].map(tag => (
-                    <span key={tag} className={`px-3 py-1 text-xs rounded-full border ${isDarkMode ? "border-gray-600 bg-gray-700" : "border-gray-200 bg-gray-50"}`}>
-                        {tag}
-                    </span>
-                ))}
-            </div>
-          </motion.div>
 
-           {/* Experience / Goal Card - Spans 2 cols */}
-           <motion.div
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className={`md:col-span-2 p-8 rounded-2xl shadow-sm border ${
-              isDarkMode ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"
-            }`}
-          >
-            <div className="flex items-center gap-4 mb-4">
-                <div className="p-3 bg-orange-500/10 rounded-lg text-orange-500"><FaBriefcase size={24}/></div>
-                <h3 className="text-xl font-bold">What I Bring</h3>
-            </div>
-            <p className={`leading-relaxed ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
-             I blend strong technical skills with a product mindset. Whether it's optimizing database queries, 
-             designing a pixel-perfect component in React, or fine-tuning an LLM prompt, I focus on <span className="font-semibold">performance, scalability, and user experience</span>.
-            </p>
-          </motion.div>
-
+          </div>
         </div>
       </div>
     </section>
